@@ -1,78 +1,38 @@
 
 body {
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
   background-color: #f4f4f4;
   color: #333;
 }
-.hero {
-  background: url('../images/background_homepage.jpg') no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
+h1, h2 {
   text-align: center;
-  position: relative;
-}
-.overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.content {
-  z-index: 1;
-  max-width: 800px;
-  padding: 20px;
-}
-h1 {
-  font-size: 2.5em;
-}
-p {
-  font-size: 1.2em;
-}
-.btn {
-  background-color: #ffcc00;
-  color: #333;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  margin: 10px;
-}
-.btn:hover {
-  background-color: #e6b800;
-}
-nav {
-  background-color: #333;
-  padding: 10px;
-  text-align: center;
-}
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-}
-nav a:hover {
-  text-decoration: underline;
-}
-.section {
-  padding: 20px;
+  color: #2c3e50;
 }
 .day {
-  background-color: #fff;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 .highlight {
-  background-color: #fffae6;
   border-left: 5px solid #ffcc00;
-  padding-left: 10px;
+}
+.btn {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #2980b9;
 }
 .popup {
   display: none;
@@ -80,18 +40,23 @@ nav a:hover {
   top: 10%;
   left: 10%;
   width: 80%;
-  height: 80%;
   background: white;
-  border: 2px solid #333;
-  overflow: auto;
+  border: 2px solid #3498db;
   padding: 20px;
   z-index: 1000;
-}
-.popup.active {
-  display: block;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 .popup-close {
   float: right;
   cursor: pointer;
   font-weight: bold;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+.map {
+  height: 500px;
+  width: 100%;
 }

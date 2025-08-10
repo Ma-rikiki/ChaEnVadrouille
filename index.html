@@ -1,20 +1,12 @@
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChaEnVadrouille</title>
-  https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap
+  <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      height: 100%;
-      overflow: hidden;
-    }
     .hero {
       background: url('assets/images/background_homepage.jpg') no-repeat center center/cover;
       height: 100vh;
@@ -46,20 +38,6 @@
       font-size: 1.2em;
       margin-bottom: 1.5em;
     }
-    .btn {
-      background-color: #ffcc00;
-      color: #333;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      cursor: pointer;
-      margin: 10px;
-      transition: background-color 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #e6b800;
-    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -72,12 +50,10 @@
     <div class="content">
       <h1>« Le monde est un livre, et ceux qui ne voyagent pas n’en lisent qu’une page. »</h1>
       <p>Bienvenue sur ChaEnVadrouille, notre carnet de voyage à travers les continents. Prêt(e) à embarquer ?</p>
-      <button class="btn" onclick="location.href='pages/egypte.html'">Égypte</button>
-      <button class="btn" onclick="location.href='pages/fidji.html'">Fidji</button>
-      <button class="btn" onclick="location.href='pages/carte.html'">Carte interactive</button>
+      <button class="btn" onclick="location.href='egypte.html'">🇪🇬 Égypte</button>
+      <button class="btn" onclick="location.href='fidji.html'">🇫🇯 Fidji</button>
+      <button class="btn" onclick="location.href='carte.html'">🗺️ Carte interactive</button>
     </div>
   </div>
 </body>
 </html>
-```
-
