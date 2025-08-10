@@ -1,1 +1,71 @@
-<html><head><title>Fidji</title></head><body><h1>Récits des Fidji</h1><p>À compléter avec les récits et photos.</p></body></html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fidji</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    function togglePopup(id) {
+      document.getElementById(id).classList.toggle('active');
+    }
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="../index.html">Accueil</a>
+    <a href="carte.html">Carte interactive</a>
+  </nav>
+  <div class="section">
+    <h2>Fidji</h2>
+    <button class="btn" onclick="togglePopup('budget')">💰 Budget</button>
+    <button class="btn" onclick="togglePopup('essentiels')">🎒 Essentiels</button>
+    <button class="btn" onclick="togglePopup('infos')">🌍 Infos pratiques</button>
+
+    <div id="budget" class="popup">
+      <span class="popup-close" onclick="togglePopup('budget')">X</span>
+      <h3>Budget estimatif</h3>
+      <ul>
+        <li><strong>Économique :</strong> 30€/jour</li>
+        <li><strong>Moyen :</strong> 60€/jour</li>
+        <li><strong>Confort :</strong> 100€/jour</li>
+      </ul>
+    </div>
+
+    <div id="essentiels" class="popup">
+      <span class="popup-close" onclick="togglePopup('essentiels')">X</span>
+      <h3>Essentiels à emporter</h3>
+      <ul>
+        <li>Crème solaire</li>
+        <li>Antidiarrhéiques</li>
+        <li>Maillot de bain</li>
+        <li>Chaussures de marche</li>
+      </ul>
+    </div>
+
+    <div id="infos" class="popup">
+      <span class="popup-close" onclick="togglePopup('infos')">X</span>
+      <h3>Infos pratiques</h3>
+      <ul>
+        <li>Visa requis</li>
+        <li>Monnaie locale : Livre égyptienne / Dollar fidjien</li>
+        <li>Langue : Arabe / Anglais</li>
+        <li>Santé : Vaccins recommandés</li>
+      </ul>
+    </div>
+
+    <div class="day highlight">
+      <h4>31/05/2025</h4>
+      <p>Arrivée à l'aéroport de Marsa Alam. Rencontre avec Tito, le chauffeur excentrique. Route chaotique dans le désert.</p>
+    </div>
+    <div class="day">
+      <h4>02/06/2025</h4>
+      <p>Voyage vers El Shalatin, marché aux chameaux. Refus de passage à un poste militaire. Découverte de Mangrove Beach et soupe de méduses.</p>
+    </div>
+    <div class="day">
+      <h4>06/08/2025</h4>
+      <p>Tourista à Wayasewa. Conditions sanitaires rudimentaires. Rencontre avec d'autres voyageurs.</p>
+    </div>
+  </div>
+</body>
+</html>
