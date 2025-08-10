@@ -2,173 +2,73 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chacha en Vadrouille</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #fdfdfd;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(135deg, #ff7e5f, #feb47b);
-      color: white;
-      padding: 1em;
-      text-align: center;
-    }
-    nav {
-      background: #333;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5em 1em;
-    }
-    nav .logo {
-      color: white;
-      font-weight: bold;
-    }
-    nav .menu-toggle {
-      display: none;
-      font-size: 1.5em;
-      color: white;
-      cursor: pointer;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1em;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-    }
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: #444;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-      }
-      nav ul.show {
-        display: flex;
-      }
-      nav .menu-toggle {
-        display: block;
-      }
-    }
-    .container {
-      padding: 1em;
-      max-width: 800px;
-      margin: auto;
-    }
-    .card {
-      background: white;
-      margin: 1em 0;
-      padding: 1em;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .card h2 {
-      margin-top: 0;
-    }
-    .card .date {
-      font-size: 0.9em;
-      color: #888;
-    }
-    .card .location {
-      font-weight: bold;
-      color: #e74c3c;
-    }
-    .card .photo {
-      background: #eee;
-      height: 200px;
-      margin: 1em 0;
-      border-radius: 8px;
-      text-align: center;
-      line-height: 200px;
-      color: #aaa;
-    }
-    footer {
-      text-align: center;
-      padding: 2em 1em;
-      font-size: 0.9em;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Chacha en Vadrouille</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Chacha en Vadrouille 🌍</h1>
-    <p>Récits de voyage autour du monde</p>
-  </header>
-  <nav>
-    <div class="logo">Carnet de Voyage</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <ul id="menu">
-      <li><a href="#egypte">Égypte</a></li>
-      <li><a href="#fidji">Fidji</a></li>
-    </ul>
-  </nav>
-  <div class="container">
-    <section id="egypte">
-      <div class="card">
-        <div class="date">31 mai 2025</div>
-        <h2>Arrivée à Marsa Alam</h2>
-        <div class="location">Égypte</div>
-        <div class="photo">📸 Photo de Tito et sa voiture</div>
-        <p>Notre chauffeur Tito nous accueille dans une Honda blanche rutilante, décorée de LED et d'une figurine du Joker. Il roule à 100 km/h sur une route défoncée, en sens inverse, et s'arrête pour nous offrir des limonades à l'ananas. Bienvenue en Égypte !</p>
-      </div>
-      <div class="card">
-        <div class="date">2 juin 2025</div>
-        <h2>Expédition vers El Shalateen</h2>
-        <div class="location">Égypte</div>
-        <div class="photo">📸 Poste frontière et méduses</div>
-        <p>Départ à 4h30 pour un marché aux chameaux à la frontière soudanaise. Après 2h d'attente au poste frontière, demi-tour. Repli sur Mangrove Beach : lagune turquoise... et soupe de méduses !</p>
-      </div>
+    <header>
+        <h1>Chacha en Vadrouille</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#egypt">Égypte</a></li>
+            <li><a href="#fiji">Fidji</a></li>
+            <li><a href="#carte">Carte</a></li>
+            <li><a href="#commentaires">Commentaires</a></li>
+        </ul>
+    </nav>
+    <section id="accueil">
+        <div class="card">
+            <img src="assets/images/photo1.jpg" alt="Charlotte devant la carte du monde">
+            <div class="card-content">
+                <h2>Bienvenue dans mon carnet de voyage</h2>
+                <p>Suivez mes aventures autour du globe, entre anecdotes, galères et émerveillements.</p>
+            </div>
+        </div>
     </section>
-    <section id="fidji">
-      <div class="card">
-        <div class="date">1-2 août 2025</div>
-        <h2>36h de voyage vers les Fidji</h2>
-        <div class="location">Fidji</div>
-        <div class="photo">📸 Aéroports et avions</div>
-        <p>Départ de Bruxelles, escale à Istanbul, puis Singapour. Atterrissage raté, course dans l'aéroport, overbooking... mais on arrive à temps. Accueil à Nadi par des musiciens et des fleurs dans les cheveux. Bula !</p>
-      </div>
-      <div class="card">
-        <div class="date">4 août 2025</div>
-        <h2>Snorkeling avec les requins</h2>
-        <div class="location">Wayasewa, Fidji</div>
-        <div class="photo">📸 Requins et lagon</div>
-        <p>À peine arrivés, on saute dans un bateau pour nager avec des requins. L'eau est froide, mais l'expérience est magique. Le soir, tout le monde tombe malade... sauf moi !</p>
-      </div>
-      <div class="card">
-        <div class="date">6 août 2025</div>
-        <h2>Tourista à Wayasewa</h2>
-        <div class="location">Wayasewa, Fidji</div>
-        <div class="photo">📸 Cuisine locale</div>
-        <p>Pas d'eau courante, pas de savon, toilettes douteuses... et me voilà clouée au lit avec une tourista carabinée. Heureusement, ma trousse de secours me sauve !</p>
-      </div>
-      <div class="card">
-        <div class="date">7 août 2025</div>
-        <h2>White Sandy Beach Resort</h2>
-        <div class="location">Naviti, Fidji</div>
-        <div class="photo">📸 Bungalow et plage</div>
-        <p>On quitte la homestay pour un vrai resort. Accueil avec noix de coco fraîche, bungalow propre, douche extérieure sous les frangipaniers. Le paradis existe !</p>
-      </div>
+    <section id="egypt">
+        <div class="card">
+            <img src="assets/images/photo2.jpg" alt="Paysage Égypte">
+            <div class="card-content">
+                <h2>Égypte - Marsa Alam</h2>
+                <p>Arrivée à Marsa Alam, rencontre avec Tito, le chauffeur de taxi le plus stylé du désert. Une Honda blanche rutilante, des LED multicolores, une figurine du Joker et des colliers de prières... Bienvenue en Afrique !</p>
+            </div>
+        </div>
     </section>
-  </div>
-  <footer>
-    © 2025 Chacha en Vadrouille — Site généré avec amour 🌺
-  </footer>
-  <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('show');
-    }
-  </script>
+    <section id="fiji">
+        <div class="card">
+            <img src="assets/images/photo3.jpg" alt="Arrivée aux Fidji">
+            <div class="card-content">
+                <h2>Fidji - Arrivée et immersion</h2>
+                <p>Après 36h de voyage, nous arrivons enfin aux Fidji. Accueil chaleureux, ukulélé, fleurs dans les cheveux et ambiance tropicale. Le paradis... ou presque !</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/images/photo4.jpg" alt="Cabane tropicale">
+            <div class="card-content">
+                <h2>White Sandy Beach Resort</h2>
+                <p>Notre cabane sur la plage, entourée de végétation luxuriante. Un vrai havre de paix après les galères de Wayasewa !</p>
+            </div>
+        </div>
+    </section>
+    <section id="carte">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1XvZzYxYwUuWZkYxYxYxYxYxYxYxYxYxY" width="100%" height="400"></iframe>
+        </div>
+    </section>
+    <section id="commentaires">
+        <script src="https://utteranc.es/client.js"
+            repo="tonpseudo/chacha-en-vadrouille"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+    <footer>
+        <p>&copy; 2025 Chacha en Vadrouille</p>
+    </footer>
 </body>
 </html>
