@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChaEnVadrouille - Égypte</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdf6e3;
+            color: #333;
+        }
+        header {
+            background-image: url('https://images.unsplash.com/photo-1589396575558-2f2c6b6a3a3e');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        header p {
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        nav {
+            background-color: #e0c097;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .entry {
+            background-color: #fff8e1;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .entry h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+        .entry .date {
+            font-weight: bold;
+            color: #a67c00;
+            margin-bottom: 10px;
+        }
+        .entry i {
+            margin-right: 8px;
+            color: #d4af37;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            nav a {
+                font-size: 1em;
+            }
+            .entry {
+                margin: 10px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Égypte</h1>
+        <p>« L’Afrique, version imprévue. »</p>
+    </header>
+    <nav>
+        <a href="#">Budgets</a>
+        <a href="#">Essentiels</a>
+        <a href="#">À savoir</a>
+    </nav>
+    <div class="entry">
+        <div class="date"><i class="fas fa-car"></i> 31/05/2025</div>
+        <h2>Bienvenue en Égypte avec Tito le Taxi Psychédélique</h2>
+        <p>Arrivée à Marsa Alam. Le chauffeur Tito, remplaçant inattendu d’Omar, nous embarque dans sa Honda tunée façon boîte de nuit. Entre conduite à contre-sens et anecdotes sur ses habitudes, il nous offre des limonades à l’ananas. Premier contact avec l’Afrique : intense et décalé.</p>
+    </div>
+    <div class="entry">
+        <div class="date"><i class="fas fa-camel"></i> 02/06/2025</div>
+        <h2>Mission Chameaux Avortée et Soupe de Méduses</h2>
+        <p>Départ à 4h30 pour El Shalateen, marché aux chameaux. Après 2h d’attente à un poste-frontière, on rebrousse chemin faute de permis. On découvre Mangrove Beach et sa lagune turquoise... remplie de méduses ! Sandwichs carnés oubliés, thé bédouin douteux, et diarrhée en prime. L’Afrique, version imprévue.</p>
+    </div>
+    <div class="entry">
+        <div class="date"><i class="fas fa-passport"></i> 03/06/2025</div>
+        <h2>Le Permis Fantôme d’El Shalateen</h2>
+        <p>Le lendemain, on apprend que notre permis avait été validé... mais au nom de Charlotte et Luca, les touristes d’hier. Spoiler : c’était nous. L’Afrique, toujours pleine de surprises. On retente vendredi. Inch’Allah.</p>
+    </div>
+</body>
+</html>

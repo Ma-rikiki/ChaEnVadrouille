@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ChaEnVadrouille - Fidji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f7f4;
+            color: #333;
+        }
+        header {
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.5em;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 180px;
+            height: 100%;
+            background-color: #a3d9c9;
+            padding-top: 100px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            color: #333;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #8ccfb9;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+        .entry {
+            background-color: #dffaf3;
+            border-left: 5px solid #8ccfb9;
+            margin-bottom: 30px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in;
+        }
+        .entry h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        .entry .date {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .entry i {
+            margin-right: 8px;
+            color: #8ccfb9;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Fidji</h1>
+            <p>« Le paradis semble à portée de main. »</p>
+        </div>
+    </header>
+    <div class="sidebar">
+        <a href="#"><i class="fas fa-coins"></i> Budgets</a>
+        <a href="#"><i class="fas fa-suitcase"></i> Essentiels</a>
+        <a href="#"><i class="fas fa-info-circle"></i> À savoir</a>
+    </div>
+    <div class="content">
+        <div class="entry">
+            <h2><i class="fas fa-plane"></i> Course Contre la Montre jusqu’à Nadi</h2>
+            <div class="date">01–03/08/2025</div>
+            <p>Départ de Bruxelles. Retards, atterrissage raté à Istanbul, course folle pour attraper les correspondances. Overbooking à Singapour, stress à l’immigration, mais on arrive enfin à Nadi. Accueil chaleureux, ukulélés, fleurs dans les cheveux. On y est !</p>
+        </div>
+        <div class="entry">
+            <h2><i class="fas fa-water"></i> Requins, Murènes et Jet Lag à Wayasewa</h2>
+            <div class="date">04/08/2025</div>
+            <p>Arrivée sur l’île de Wayasewa. Pension chez l’habitant, immersion totale. Snorkeling avec requins et murènes, ambiance roots. Premiers signes de tourista. Le décor est paradisiaque, mais l’hygiène laisse à désirer.</p>
+        </div>
+        <div class="entry">
+            <h2><i class="fas fa-notes-medical"></i> Tourista, Toilettes de l’Enfer et Médecine de Voyage</h2>
+            <div class="date">05–07/08/2025</div>
+            <p>Intoxication alimentaire sévère. Diarrhée, vomissements, fièvre. Conditions sanitaires rudimentaires. Rencontre avec des voyageurs malades, entraide médicale improvisée. Luca tombe malade à son tour. On survit grâce aux tisanes, huiles essentielles et humour noir.</p>
+        </div>
+        <div class="entry">
+            <h2><i class="fas fa-home"></i> Évasion vers le White Sandy Beach Resort</h2>
+            <div class="date">08/08/2025</div>
+            <p>Transfert en mer vers un nouveau lieu. Surprise : ce n’est plus un resort mais une homestay. Accueil bienveillant, noix de coco fraîche, bungalow propre. Rencontre avec une famille française. On respire enfin. Le paradis semble à portée de main.</p>
+        </div>
+    </div>
+</body>
+</html>
