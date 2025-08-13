@@ -57,10 +57,10 @@
             position: relative;
             height: 70vh;
             background: linear-gradient(135deg, 
-                rgba(212, 175, 55, 0.85) 0%,
-                rgba(184, 134, 11, 0.7) 50%,
-                rgba(120, 53, 15, 0.8) 100%),
-                url('https://images.unsplash.com/photo-1539650116574-75c0c6d73a0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+                rgba(212, 175, 55, 0.8) 0%,
+                rgba(184, 134, 11, 0.6) 50%,
+                rgba(120, 53, 15, 0.7) 100%),
+                url('https://images.unsplash.com/photo-1539650116574-75c0c6d73a0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -349,7 +349,28 @@
         /* Section Budget */
         .budget-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(184, 134, 11, 0.08) 100%);
+            background: 
+                linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(184, 134, 11, 0.08) 100%),
+                url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        .budget-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(253, 246, 227, 0.95) 0%, rgba(244, 229, 193, 0.98) 100%);
+        }
+        
+        .budget-section * {
+            position: relative;
+            z-index: 1;
         }
         
         .budget-grid {
@@ -687,49 +708,49 @@
             <p class="section-subtitle">Les merveilles classiques et les trésors cachés</p>
             
             <div class="highlights-grid">
-                <div class="highlight-card">
+                <div class="highlight-card" style="background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="icon">🏛️</div>
                     <h3>Pyramides de Gizeh</h3>
                     <p>Les dernières merveilles du monde antique. Entrée dans la Grande Pyramide possible moyennant 440 EGP supplémentaires - une expérience claustrophobe mais inoubliable !</p>
                 </div>
                 
-                <div class="highlight-card">
+                <div class="highlight-card" style="background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1553913861-c0fddf2619ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="icon">🏺</div>
                     <h3>Vallée des Rois</h3>
                     <p>64 tombeaux royaux cachés dans la montagne thébaine. Le tombeau de Toutânkhamon nécessite un billet spécial mais vaut largement le détour.</p>
                 </div>
                 
-                <div class="highlight-card">
+                <div class="highlight-card" style="background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1573441788-7878c02e6c9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="icon">🔍</div>
                     <h3>Dendéra Temple</h3>
                     <p>Le temple le mieux conservé d'Égypte ! Ses plafonds astronomiques et ses couleurs préservées en font un joyau méconnu à 60km de Louxor.</p>
                 </div>
                 
-                <div class="highlight-card">
+                <div class="highlight-card" style="background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="icon">🏖️</div>
                     <h3>Désert Blanc</h3>
                     <p>Formations calcaires surréalistes qui ressemblent à un autre monde. Camping sous les étoiles obligatoire - une expérience mystique garantie.</p>
                 </div>
                 
-                <div class="highlight-card">
+                <div class="highlight-card" style="background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="icon">🐊</div>
                     <h3>Temple de Kom Ombo</h3>
                     <p>Unique temple double dédié au dieu crocodile Sobek et au dieu faucon Horus. Ne ratez pas le musée des crocodiles momifiés !</p>
                 </div>
                 
-                <div class="highlight-card">
+                <div class="highlight-card" style="background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1553913853-c7d6c9436cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="icon">🏝️</div>
                     <h3>Île Éléphantine</h3>
                     <p>Oasis de verdure sur le Nil à Assouan. Village nubien authentique, jardins botaniques et vue imprenable sur les cataractes.</p>
                 </div>
                 
-                <div class="highlight-card">
+                <div class="highlight-card" style="background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="icon">🦅</div>
                     <h3>Monastère Saint-Antoine</h3>
                     <p>Le plus ancien monastère chrétien au monde, perdu dans le désert oriental. Fresques byzantines exceptionnelles et silence absolu.</p>
                 </div>
                 
-                <div class="highlight-card">
+                <div class="highlight-card" style="background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1582735689369-4fe89db7114c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
                     <div class="icon">💎</div>
                     <h3>Wadi El Gemal</h3>
                     <p>Parc national secret entre mer Rouge et montagnes. Plages vierges, coraux intacts et rencontre avec les Bisharis, derniers nomades bédouins.</p>
@@ -763,4 +784,298 @@
                 <div class="day">
                     <strong>Jour 4-7 :</strong> Croisière sur le Nil - Louxor, Edfou, Kom Ombo, Assouan, île Éléphantine
                 </div>
-                <div
+                <div class="day">
+                    <strong>Jour 8-9 :</strong> Abou Simbel - Excursion aux temples de Ramsès II et Néfertari
+                </div>
+                <div class="day">
+                    <strong>Jour 10 :</strong> Retour et détente ou visite d'Alexandrie
+                </div>
+            </div>
+            
+            <div class="itinerary">
+                <h3>🌟 Grand Tour (15 jours)</h3>
+                <div class="day">
+                    <strong>Jour 1-4 :</strong> Le Caire approfondi - Tous les sites + Alexandrie (Bibliothèque, Catacombes)
+                </div>
+                <div class="day">
+                    <strong>Jour 5-10 :</strong> Croisière complète + Abou Simbel + Temple de Philae
+                </div>
+                <div class="day">
+                    <strong>Jour 11-13 :</strong> Désert blanc et oasis de Siwa - Camping sous les étoiles
+                </div>
+                <div class="day">
+                    <strong>Jour 14-15 :</strong> Mer Rouge - Plongée et détente à Hurghada ou Marsa Alam
+                </div>
+            </div>
+            
+            <div class="itinerary">
+                <h3>🔍 Circuit Insolite (12 jours)</h3>
+                <div class="day">
+                    <strong>Jour 1-2 :</strong> Le Caire alternatif - Cité des morts, Monastère Saint-Simon, Art contemporain
+                </div>
+                <div class="day">
+                    <strong>Jour 3-4 :</strong> Fayoum - Lac Qaroun, Ville des crocodiles, Wadi El Rayan
+                </div>
+                <div class="day">
+                    <strong>Jour 5-7 :</strong> Haute-Égypte secrète - Dendéra, Abydos, villages nubiens authentiques
+                </div>
+                <div class="day">
+                    <strong>Jour 8-10 :</strong> Désert oriental - Monastère Saint-Antoine, Wadi El Gemal
+                </div>
+                <div class="day">
+                    <strong>Jour 11-12 :</strong> Mer Rouge sauvage - Snorkeling avec dugongs, rencontre Bisharis
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Budget -->
+        <section id="budget" class="budget-section section hidden">
+            <h2 class="section-title">💰 Estimations Budgétaires</h2>
+            <p class="section-subtitle">Planifiez votre voyage selon votre budget</p>
+            
+            <div class="budget-grid">
+                <div class="budget-card">
+                    <div class="card-header">
+                        <h3 class="card-title">🎒 Budget Routard</h3>
+                        <p class="card-subtitle">Pour les aventuriers économes</p>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Hébergement (auberges/dortoirs)</span>
+                        <span class="item-price">15-25€/nuit</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Repas (street food/locaux)</span>
+                        <span class="item-price">8-15€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Transport local (bus/train)</span>
+                        <span class="item-price">5-10€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Activités/Sites</span>
+                        <span class="item-price">20-30€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Divers/Shopping</span>
+                        <span class="item-price">10-15€/jour</span>
+                    </div>
+                    <div class="budget-item total">
+                        <span class="item-label">Total par jour</span>
+                        <span class="item-price">58-95€</span>
+                    </div>
+                </div>
+                
+                <div class="budget-card">
+                    <div class="card-header">
+                        <h3 class="card-title">🏨 Budget Confort</h3>
+                        <p class="card-subtitle">L'équilibre parfait</p>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Hébergement (hôtels 3-4*)</span>
+                        <span class="item-price">50-80€/nuit</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Repas (restaurants moyens)</span>
+                        <span class="item-price">25-40€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Transport privé/guide</span>
+                        <span class="item-price">30-50€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Activités/Tours guidés</span>
+                        <span class="item-price">40-60€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Divers/Souvenirs</span>
+                        <span class="item-price">20-30€/jour</span>
+                    </div>
+                    <div class="budget-item total">
+                        <span class="item-label">Total par jour</span>
+                        <span class="item-price">165-260€</span>
+                    </div>
+                </div>
+                
+                <div class="budget-card">
+                    <div class="card-header">
+                        <h3 class="card-title">👑 Budget Luxe</h3>
+                        <p class="card-subtitle">L'expérience premium</p>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Hébergement (5* & resorts)</span>
+                        <span class="item-price">150-400€/nuit</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Repas (gastronomie)</span>
+                        <span class="item-price">60-100€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Transport VIP/hélico</span>
+                        <span class="item-price">100-200€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Activités exclusives</span>
+                        <span class="item-price">80-150€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Shopping/Expériences</span>
+                        <span class="item-price">50-100€/jour</span>
+                    </div>
+                    <div class="budget-item total">
+                        <span class="item-label">Total par jour</span>
+                        <span class="item-price">440-950€</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 30px; background: rgba(255, 255, 255, 0.9); border-radius: 15px; border-left: 5px solid #d4af37;">
+                <h3 style="color: #b8860b; margin-bottom: 15px;">💡 Conseils Budget</h3>
+                <p style="margin-bottom: 10px;"><strong>Vol :</strong> 400-800€ depuis l'Europe selon la saison et les escales.</p>
+                <p style="margin-bottom: 10px;"><strong>Visa :</strong> 25€ à l'arrivée pour un visa touristique de 30 jours.</p>
+                <p style="margin-bottom: 10px;"><strong>Assurance :</strong> 30-50€ pour une assurance voyage complète.</p>
+                <p style="margin-bottom: 10px;"><strong>Astuce :</strong> Négociez toujours les prix, surtout pour les souvenirs et les taxis.</p>
+                <p><strong>Économies :</strong> Les trains de nuit sont économiques (30€ Le Caire-Louxor) et évitent une nuit d'hôtel.</p>
+            </div>
+        </section>
+
+        <!-- Section Conseils -->
+        <section id="conseils" class="section hidden">
+            <h2 class="section-title">ℹ️ À Savoir Avant de Partir</h2>
+            <p class="section-subtitle">Informations essentielles pour un voyage réussi</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="icon" style="color: #e74c3c;">📋</div>
+                    <h3>Formalités</h3>
+                    <p><strong>Visa :</strong> Obligatoire, 25€ à l'arrivée ou e-visa en ligne (25$ + frais)</p>
+                    <p><strong>Passeport :</strong> Valide 6 mois après le retour</p>
+                    <p><strong>Vaccins :</strong> Aucun obligatoire, DTP recommandé</p>
+                    <p><strong>Assurance :</strong> Fortement conseillée (rapatriement)</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #f39c12;">💱</div>
+                    <h3>Monnaie & Paiements</h3>
+                    <p><strong>Devise :</strong> Livre égyptienne (EGP)</p>
+                    <p><strong>Taux :</strong> 1€ ≈ 55 EGP (fluctuant)</p>
+                    <p><strong>Change :</strong> Banques et bureaux de change officiels uniquement</p>
+                    <p><strong>Cartes :</strong> Acceptées dans les hôtels, peu ailleurs</p>
+                    <p><strong>Pourboire :</strong> Baksheesh obligatoire (1-5 EGP)</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #3498db;">🌡️</div>
+                    <h3>Climat & Météo</h3>
+                    <p><strong>Meilleure période :</strong> Octobre-Avril (20-25°C)</p>
+                    <p><strong>Été :</strong> Éviter juin-août (40-45°C)</p>
+                    <p><strong>Désert :</strong> Écarts jour/nuit importants (-10°C la nuit)</p>
+                    <p><strong>Sandstorms :</strong> Khamsin de mars à mai</p>
+                    <p><strong>Mer Rouge :</strong> Plongée possible toute l'année</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #9b59b6;">🕌</div>
+                    <h3>Culture & Religion</h3>
+                    <p><strong>Religion :</strong> Islam majoritaire (90%), coptes (10%)</p>
+                    <p><strong>Ramadan :</strong> Restaurants fermés le jour, ambiance différente</p>
+                    <p><strong>Vendredi :</strong> Jour de prière, sites fermés 11h-13h</p>
+                    <p><strong>Tenue :</strong> Couvrir épaules et genoux dans les mosquées</p>
+                    <p><strong>Photos :</strong> Demander permission pour les personnes</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #27ae60;">🍽️</div>
+                    <h3>Gastronomie</h3>
+                    <p><strong>Spécialités :</strong> Koshari, ful medames, molokhia, baklava</p>
+                    <p><strong>Street food :</strong> Délicieuse mais attention à l'hygiène</p>
+                    <p><strong>Eau :</strong> Uniquement en bouteille capsulée</p>
+                    <p><strong>Alcool :</strong> Hôtels et restaurants touristiques seulement</p>
+                    <p><strong>Thé :</strong> Très sucré, refuser poliment si diabétique</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #e67e22;">🚨</div>
+                    <h3>Sécurité</h3>
+                    <p><strong>Zones sensibles :</strong> Éviter Sinaï Nord, frontière libyenne</p>
+                    <p><strong>Tourisme :</strong> Police touristique présente sur tous les sites</p>
+                    <p><strong>Arnaques :</strong> Faux guides, prix gonflés, "cadeaux" payants</p>
+                    <p><strong>Transport :</strong> Éviter les bus de nuit inter-villes</p>
+                    <p><strong>Femmes :</strong> Harcèlement possible, voyager en groupe conseillé</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #1abc9c;">💊</div>
+                    <h3>Santé</h3>
+                    <p><strong>Tourista :</strong> Quasi-inévitable, prévoir Imodium et sels réhydratants</p>
+                    <p><strong>Soleil :</strong> Crème SPF 50+, chapeau, lunettes</p>
+                    <p><strong>Pharmacie :</strong> Médicaments disponibles, noms différents</p>
+                    <p><strong>Hôpitaux privés :</strong> Recommandés, assurance requise</p>
+                    <p><strong>Déshydratation :</strong> Boire 3L d'eau/jour minimum</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #e91e63;">🎭</div>
+                    <h3>Culture Locale</h3>
+                    <p><strong>Salutations :</strong> "Ahlan wa sahlan" (bienvenue)</p>
+                    <p><strong>Négociation :</strong> Art de vivre, diviser par 3 le prix initial</p>
+                    <p><strong>Hospitalité :</strong> Très importante, accepter le thé offert</p>
+                    <p><strong>Temps :</strong> Concept relatif, "bokra" (demain) peut signifier plus tard</p>
+                    <p><strong>Main gauche :</strong> Impure, toujours donner de la main droite</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #34495e;">📱</div>
+                    <h3>Technologie</h3>
+                    <p><strong>Internet :</strong> WiFi dans la plupart des hôtels</p>
+                    <p><strong>SIM locale :</strong> Vodafone, Orange disponibles partout</p>
+                    <p><strong>Prises :</strong> Type C et F (européennes), adaptateur inutile</p>
+                    <p><strong>VPN :</strong> Certains sites bloqués, VPN recommandé</p>
+                    <p><strong>Photos :</strong> Interdites dans les tombeaux (300 EGP d'amende)</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #8e44ad;">✈️</div>
+                    <h3>Transport</h3>
+                    <p><strong>Vols intérieurs :</strong> EgyptAir pour Le Caire-Assouan (1h vs 10h route)</p>
+                    <p><strong>Trains :</strong> Confortables Le Caire-Louxor, réserver classe AC</p>
+                    <p><strong>Taxis :</strong> Négocier avant, ou utiliser Uber/Careem</p>
+                    <p><strong>Bateaux :</strong> Felouques pour coucher de soleil romantique</p>
+                    <p><strong>Location voiture :</strong> Déconseillée (conduite chaotique)</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #d35400;">🎁</div>
+                    <h3>Shopping</h3>
+                    <p><strong>Souvenirs :</strong> Papyrus, épices, parfums, bijoux</p>
+                    <p><strong>Contrefaçons :</strong> Nombreuses, attention aux "authentiques" antiquités</p>
+                    <p><strong>Tapis :</strong> École de tissage de Fustat pour de vrais tapis</p>
+                    <p><strong>Or :</strong> Khan el-Khalili, vérifier les carats</p>
+                    <p><strong>Douane :</strong> Limite 200 cigarettes, 1L alcool</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(184, 134, 11, 0.1)); border-radius: 15px; border: 2px solid #d4af37;">
+                <h3 style="color: #b8860b; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">🏆 Conseils d'Initié</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">⏰ Timing parfait</h4>
+                        <p>Visiter les Pyramides au lever du soleil (6h) pour éviter la foule et la chaleur. Réserver la visite de la chambre du roi à l'avance.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">🎫 Billets malins</h4>
+                        <p>Le Cairo Pass (3 jours/100€) donne accès à plus de 30 sites. Rentable si vous visitez 4+ sites majeurs.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">🍜 Où manger</h4>
+                        <p>Koshari Abou Tarek au Caire (plat national à 1€), et les restaurants flottants sur le Nil pour une expérience unique.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 10px;">📸 Photos interdites</h4>
+                        <p>Billets photo séparés dans tous les tombeaux (150-300 EGP). Interdit de photographier les momies même avec billet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+        </html>
