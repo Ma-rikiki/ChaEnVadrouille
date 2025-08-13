@@ -1,103 +1,495 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChaEnVadrouille</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdf6e3;
-    }
-
-    .hero {
-      background: url('assets/images/background_homepage.jpg') no-repeat center center/cover;
-      height: 100vh;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      padding: 20px;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 0.5em;
-      font-weight: 600;
-      color: #fff8e1;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-    }
-
-    p {
-      font-size: 1.3em;
-      margin-bottom: 2em;
-      color: #fefae0;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    }
-
-    .btn {
-      background-color: #f4e2b5;
-      color: #3e3e3e;
-      border: none;
-      padding: 14px 28px;
-      margin: 10px;
-      font-size: 1em;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }
-
-    .btn:hover {
-      background-color: #e6d3a3;
-      transform: scale(1.05);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #3e3e3e;
-      color: #ddd;
-      font-size: 0.9em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChaEnVadrouille - Carnets de Voyage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        /* Animated background elements */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+            font-size: 3rem;
+            user-select: none;
+            color: white;
+        }
+        
+        .floating-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 15%; right: 10%; animation-delay: 1.5s; }
+        .floating-icon:nth-child(3) { bottom: 25%; left: 15%; animation-delay: 3s; }
+        .floating-icon:nth-child(4) { bottom: 15%; right: 20%; animation-delay: 4.5s; }
+        .floating-icon:nth-child(5) { top: 45%; left: 8%; animation-delay: 6s; }
+        .floating-icon:nth-child(6) { top: 65%; right: 12%; animation-delay: 7.5s; }
+        .floating-icon:nth-child(7) { top: 30%; left: 50%; animation-delay: 2s; }
+        .floating-icon:nth-child(8) { bottom: 40%; right: 45%; animation-delay: 5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-30px) rotate(90deg) scale(1.1); }
+            50% { transform: translateY(-15px) rotate(180deg) scale(0.9); }
+            75% { transform: translateY(-25px) rotate(270deg) scale(1.05); }
+        }
+        
+        /* Hero section with travel journal theme */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            line-height: 1.2;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+        
+        .hero-content .tagline {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1.5s ease-out 0.3s both;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            animation: fadeInUp 1.8s ease-out 0.6s both;
+        }
+        
+        /* Journal-style buttons */
+        .destinations {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 2.1s ease-out 0.9s both;
+        }
+        
+        .destination-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            min-width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .destination-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .destination-card:hover::before {
+            left: 100%;
+        }
+        
+        .destination-card .flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        .destination-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .destination-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        /* Interactive map button */
+        .map-section {
+            text-align: center;
+            margin-top: 3rem;
+            animation: fadeInUp 2.4s ease-out 1.2s both;
+        }
+        
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.3);
+        }
+        
+        .map-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(238, 90, 36, 0.4);
+            background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+        }
+        
+        .map-btn i {
+            font-size: 1.3rem;
+            animation: spin 4s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* About section */
+        .about-section {
+            padding: 100px 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin-top: 100px;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .travel-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card .icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-card h3 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 100px;
+        }
+        
+        footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+        
+        footer p {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            color: #ecf0f1;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .destinations {
+                gap: 1rem;
+            }
+            
+            .destination-card {
+                min-width: 150px;
+                padding: 1.5rem 1rem;
+            }
+            
+            .destination-card .flag {
+                font-size: 2.5rem;
+            }
+            
+            .floating-icon {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .destinations {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .destination-card {
+                width: 90%;
+                max-width: 280px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="hero">
-    <div class="overlay"></div>
-    <div class="content">
-      <h1>« Le monde est un livre, et je veux en lire chaque page. »</h1>
-      <p>Je t’emmène avec moi, entre sable chaud et lagons turquoise.</p>
-      <button class="btn" onclick="location.href='egypte.html'">🇪🇬 Égypte</button>
-      <button class="btn" onclick="location.href='fidji.html'">🇫🇯 Fidji</button>
-      <button class="btn" onclick="location.href='carte.html'">🗺️ Carte interactive</button>
+    <!-- Animated background -->
+    <div class="bg-animation">
+        <div class="floating-icon">📍</div>
+        <div class="floating-icon">✈️</div>
+        <div class="floating-icon">🧳</div>
+        <div class="floating-icon">📷</div>
+        <div class="floating-icon">🗺️</div>
+        <div class="floating-icon">🧭</div>
+        <div class="floating-icon">📖</div>
+        <div class="floating-icon">🌍</div>
     </div>
-  </div>
-
-  <footer>
-    © 2025 ChaEnVadrouille — Tous droits réservés
-  </footer>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🌍 ChaEnVadrouille</h1>
+            <p class="tagline">« Le monde est un livre, et je veux en lire chaque page. »</p>
+            <p class="subtitle">Carnets de voyage authentiques • Récits d'aventures • Conseils pratiques</p>
+            
+            <div class="destinations">
+                <a href="egypte.html" class="destination-card">
+                    <span class="flag">🏺</span>
+                    <h3>Égypte</h3>
+                    <p>Pyramides & mystères</p>
+                </a>
+                
+                <a href="fidji.html" class="destination-card">
+                    <span class="flag">🏝️</span>
+                    <h3>Fidji</h3>
+                    <p>Paradis tropical</p>
+                </a>
+            </div>
+            
+            <div class="map-section">
+                <a href="carte.html" class="map-btn">
+                    <i class="fas fa-globe"></i>
+                    Carte Interactive des Aventures
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2>L'Art du Carnet de Voyage</h2>
+            <p>Bienvenue dans mon univers de voyages authentiques et d'aventures improbables. Ici, pas de filtres Instagram ou de destinations mainstream, mais des récits bruts, des rencontres inattendues et des découvertes qui sortent des sentiers battus.</p>
+            <p>Chaque voyage est une page blanche qui se remplit d'émotions, de surprises et parfois... de mésaventures mémorables. De l'Égypte mystérieuse aux îles paradisiaques des Fidji, je partage avec vous mes carnets de route, mes conseils pratiques et mes coups de cœur.</p>
+            
+            <div class="travel-stats">
+                <div class="stat-card">
+                    <div class="icon">🌍</div>
+                    <h3>12</h3>
+                    <p>Pays explorés</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon">✈️</div>
+                    <h3>47</h3>
+                    <p>Vols pris</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon">📖</div>
+                    <h3>89</h3>
+                    <p>Récits partagés</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon">📷</div>
+                    <h3>2.3k</h3>
+                    <p>Photos capturées</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <h3>Restons en Contact</h3>
+        <p>Suivez mes aventures et partageons nos expériences de voyage</p>
+        <p>✉️ contact@chaenvadrouille.com</p>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        
+        <p style="margin-top: 2rem; opacity: 0.6; font-size: 0.9rem;">
+            © 2025 ChaEnVadrouille — Tous droits réservés
+        </p>
+    </footer>
+</body>
+</html>
