@@ -1,118 +1,438 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChaEnVadrouille - Égypte</title>
-    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: #fdf6e3;
-            color: #333;
+            box-sizing: border-box;
         }
-        header img {
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fdf6e3 0%, #f4e5c1 100%);
+            color: #2d2d2d;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background elements */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
-        header h1 {
-            font-size: 2em;
-            margin: 10px 0 0;
-            text-align: center;
+        
+        .floating-icon {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+            font-size: 2.5rem;
+            user-select: none;
         }
-        header p {
-            font-style: italic;
-            font-size: 1.1em;
-            text-align: center;
-            margin-bottom: 20px;
+        
+        .floating-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .floating-icon:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .floating-icon:nth-child(4) { bottom: 20%; right: 25%; animation-delay: 3s; }
+        .floating-icon:nth-child(5) { top: 50%; left: 5%; animation-delay: 4s; }
+        .floating-icon:nth-child(6) { top: 60%; right: 10%; animation-delay: 5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
-        nav {
-            background-color: #e0c097;
+        
+        /* Header with Egypt imagery */
+        .header-container {
+            position: relative;
+            height: 70vh;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.85) 0%,
+                rgba(184, 134, 11, 0.7) 50%,
+                rgba(120, 53, 15, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1539650116574-75c0c6d73a0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            animation: slideInDown 1.2s ease-out;
+        }
+        
+        .header-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.7), 0 0 10px rgba(212,175,55,0.5); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.7), 0 0 20px rgba(212,175,55,0.8); }
+        }
+        
+        .header-content p {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: slideInUp 1.5s ease-out 0.3s both;
+        }
+        
+        .pyramid-decoration {
+            position: absolute;
+            bottom: -50px;
+            left: 10%;
+            width: 100px;
+            height: 80px;
+            background: linear-gradient(45deg, #d4af37 0%, #b8860b 100%);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            opacity: 0.3;
+            animation: pyramidFloat 4s ease-in-out infinite;
+        }
+        
+        .pyramid-decoration:nth-of-type(2) {
+            right: 15%;
+            left: auto;
+            width: 80px;
+            height: 60px;
+            animation-delay: 2s;
+        }
+        
+        @keyframes pyramidFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes slideInDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Navigation moderne */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #d4af37;
         }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
         nav a {
             color: #333;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+        
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        nav a:hover {
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212,175,55,0.3);
+        }
+        
+        nav a:hover::before {
+            left: 100%;
+        }
+        
+        /* Conteneur des articles */
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        /* Cartes d'articles modernisées */
         .entry {
-            background-color: #fff8e1;
-            margin: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            animation: fadeIn 1s ease-in-out;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,248,225,0.95) 100%);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(212,175,55,0.2);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideInView 0.8s ease-out forwards;
+            transition: all 0.3s ease;
         }
-        .entry h2 {
-            font-size: 1.3em;
-            margin-bottom: 5px;
+        
+        .entry:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-color: rgba(212,175,55,0.4);
         }
+        
+        .entry::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #f4d03f, #d4af37);
+            transition: left 0.5s ease;
+        }
+        
+        .entry:hover::before {
+            left: 100%;
+        }
+        
+        .entry:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+        
+        .entry:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes slideInView {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
         .entry .date {
-            font-weight: bold;
-            color: #a67c00;
-            margin-bottom: 10px;
-        }
-        .entry i {
-            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
             color: #d4af37;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            gap: 0.5rem;
         }
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
+        
+        .entry .date i {
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
+            padding: 0.5rem;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            color: white;
+            border-radius: 50%;
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: iconPulse 2s ease-in-out infinite;
         }
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.5em;
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .entry h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d2d2d;
+            line-height: 1.3;
+        }
+        
+        .entry p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+        }
+        
+        /* Éléments décoratifs */
+        .adventure-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2.5rem;
+            opacity: 0.3;
+            animation: rotate 10s linear infinite;
+            user-select: none;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
             }
+            
+            .header-content p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
             nav a {
-                font-size: 1em;
+                text-align: center;
+                font-size: 1rem;
             }
+            
             .entry {
-                margin: 10px;
-                padding: 10px;
+                margin: 1rem 0;
+                padding: 1.5rem;
+            }
+            
+            .entry h2 {
+                font-size: 1.5rem;
+            }
+            
+            .floating-icon {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-container {
+                height: 50vh;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .entry {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="images/egypte_header.jpg" alt="Illustration Égypte">
-        <h1>ChaEnVadrouille - Égypte</h1>
-        <p>"Le véritable voyage ne consiste pas à chercher de nouveaux paysages, mais à avoir de nouveaux yeux."</p>
+    <!-- Background animations -->
+    <div class="bg-animation">
+        <div class="floating-icon">🧭</div>
+        <div class="floating-icon">🗺️</div>
+        <div class="floating-icon">🏔️</div>
+        <div class="floating-icon">🌍</div>
+        <div class="floating-icon">📸</div>
+        <div class="floating-icon">🔍</div>
+    </div>
+    
+    <!-- Header with Egypt theme -->
+    <header class="header-container">
+        <div class="header-overlay"></div>
+        <div class="pyramid-decoration"></div>
+        <div class="pyramid-decoration"></div>
+        <div class="header-content">
+            <h1>🏺 ChaEnVadrouille</h1>
+            <p>« L'Afrique, version imprévue. »</p>
+        </div>
     </header>
+    
+    <!-- Navigation -->
     <nav>
-        <a href="#">Budgets</a>
-        <a href="#">Essentiels</a>
-        <a href="#">À savoir</a>
+        <div class="nav-container">
+            <a href="#">💰 Budgets</a>
+            <a href="#">🎒 Essentiels</a>
+            <a href="#">ℹ️ À savoir</a>
+        </div>
     </nav>
-    <div class="entry">
-        <div class="date"><i class="fas fa-car"></i> 31/05/2025</div>
-        <h2>Bienvenue en Égypte avec Tito le Taxi Psychédélique</h2>
-        <p>Arrivée à Marsa Alam. Le chauffeur Tito, remplaçant inattendu d’Omar, nous embarque dans sa Honda tunée façon boîte de nuit. Entre conduite à contre-sens et anecdotes sur ses habitudes, il nous offre des limonades à l’ananas. Premier contact avec l’Afrique : intense et décalé.</p>
-    </div>
-    <div class="entry">
-        <div class="date"><i class="fas fa-camel"></i> 02/06/2025</div>
-        <h2>Mission Chameaux Avortée et Soupe de Méduses</h2>
-        <p>Départ à 4h30 pour El Shalateen, marché aux chameaux. Après 2h d’attente à un poste-frontière, on rebrousse chemin faute de permis. On découvre Mangrove Beach et sa lagune turquoise... remplie de méduses ! Sandwichs carnés oubliés, thé bédouin douteux, et diarrhée en prime. L’Afrique, version imprévue.</p>
-    </div>
-    <div class="entry">
-        <div class="date"><i class="fas fa-passport"></i> 03/06/2025</div>
-        <h2>Le Permis Fantôme d’El Shalateen</h2>
-        <p>Le lendemain, on apprend que notre permis avait été validé... mais au nom de Charlotte et Luca, les touristes d’hier. Spoiler : c’était nous. L’Afrique, toujours pleine de surprises. On retente vendredi. Inch’Allah.</p>
+    
+    <!-- Container for entries -->
+    <div class="container">
+        <div class="entry">
+            <div class="adventure-icon">🛣️</div>
+            <div class="date">
+                🚗 31/05/2025
+            </div>
+            <h2>Bienvenue en Égypte avec Tito le Taxi Psychédélique</h2>
+            <p>Arrivée à Marsa Alam. Le chauffeur Tito, remplaçant inattendu d'Omar, nous embarque dans sa Honda tunée façon boîte de nuit. Entre conduite à contre-sens et anecdotes sur ses habitudes, il nous offre des limonades à l'ananas. Premier contact avec l'Afrique : intense et décalé.</p>
+        </div>
+        
+        <div class="entry">
+            <div class="adventure-icon">🌊</div>
+            <div class="date">
+                🐪 02/06/2025
+            </div>
+            <h2>Mission Chameaux Avortée et Soupe de Méduses</h2>
+            <p>Départ à 4h30 pour El Shalateen, marché aux chameaux. Après 2h d'attente à un poste-frontière, on rebrousse chemin faute de permis. On découvre Mangrove Beach et sa lagune turquoise... remplie de méduses ! Sandwichs carnés oubliés, thé bédouin douteux, et diarrhée en prime. L'Afrique, version imprévue.</p>
+        </div>
+        
+        <div class="entry">
+            <div class="adventure-icon">⭐</div>
+            <div class="date">
+                📋 03/06/2025
+            </div>
+            <h2>Le Permis Fantôme d'El Shalateen</h2>
+            <p>Le lendemain, on apprend que notre permis avait été validé... mais au nom de Charlotte et Luca, les touristes d'hier. Spoiler : c'était nous. L'Afrique, toujours pleine de surprises. On retente vendredi. Inch'Allah.</p>
+        </div>
     </div>
 </body>
 </html>
- 
-
- 
-
