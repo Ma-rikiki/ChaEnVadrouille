@@ -109,31 +109,6 @@
             animation: slideInUp 1.5s ease-out 0.3s both;
         }
         
-        .pyramid-decoration {
-            position: absolute;
-            bottom: -50px;
-            left: 10%;
-            width: 100px;
-            height: 80px;
-            background: linear-gradient(45deg, #d4af37 0%, #b8860b 100%);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            opacity: 0.3;
-            animation: pyramidFloat 4s ease-in-out infinite;
-        }
-        
-        .pyramid-decoration:nth-of-type(2) {
-            right: 15%;
-            left: auto;
-            width: 80px;
-            height: 60px;
-            animation-delay: 2s;
-        }
-        
-        @keyframes pyramidFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        
         @keyframes slideInDown {
             from { transform: translateY(-100px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -275,14 +250,6 @@
             left: 100%;
         }
         
-        .blog-section .entry:nth-child(even) {
-            animation-delay: 0.2s;
-        }
-        
-        .blog-section .entry:nth-child(odd) {
-            animation-delay: 0.4s;
-        }
-        
         @keyframes slideInView {
             to {
                 transform: translateY(0);
@@ -298,26 +265,6 @@
             margin-bottom: 1rem;
             font-size: 1.1rem;
             gap: 0.5rem;
-        }
-        
-        .blog-section .entry .date i {
-            margin-right: 0.8rem;
-            font-size: 1.3rem;
-            padding: 0.5rem;
-            background: linear-gradient(135deg, #d4af37, #f4d03f);
-            color: white;
-            border-radius: 50%;
-            min-width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: iconPulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
         }
         
         .blog-section .entry h2 {
@@ -339,7 +286,7 @@
         /* Highlights Grid */
         .highlights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -352,53 +299,51 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             border-top: 4px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212,175,55,0.1), transparent);
+            transform: rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+        
+        .highlight-card:hover::before {
+            transform: rotate(45deg) translate(50%, 50%);
         }
         
         .highlight-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.02);
             box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
         
         .highlight-card .icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
         
         .highlight-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #b8860b;
             margin-bottom: 15px;
-        }
-
-        /* Itinéraires */
-        .itinerary {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-left: 5px solid #d4af37;
+            position: relative;
+            z-index: 1;
+            font-family: 'Playfair Display', serif;
         }
         
-        .itinerary h3 {
-            color: #b8860b;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .day {
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 10px;
-            border-left: 3px solid #d4af37;
-        }
-        
-        .day strong {
-            color: #b8860b;
+        .highlight-card p {
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
         }
 
         /* Section Budget */
@@ -450,8 +395,8 @@
             font-size: 1.8rem;
             color: #2c1810;
             margin-bottom: 10px;
-            text-transform: capitalize;
             font-weight: 700;
+            font-family: 'Playfair Display', serif;
         }
         
         .card-subtitle {
@@ -506,7 +451,7 @@
         /* Section Conseils */
         .tips-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 40px;
         }
@@ -517,6 +462,12 @@
             padding: 25px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border-top: 3px solid #d4af37;
+            transition: all 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
         .tip-card .icon {
@@ -526,7 +477,58 @@
         
         .tip-card h3 {
             color: #b8860b;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .tip-card p {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* Itinéraires */
+        .itinerary {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid #d4af37;
+            transition: all 0.3s ease;
+        }
+        
+        .itinerary:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .itinerary h3 {
+            color: #b8860b;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .day {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid #d4af37;
+            transition: all 0.3s ease;
+        }
+        
+        .day:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: translateX(3px);
+        }
+        
+        .day strong {
+            color: #b8860b;
         }
 
         /* Hidden sections */
@@ -556,10 +558,6 @@
                 font-size: 2.5rem;
             }
             
-            .header-content p {
-                font-size: 1.1rem;
-            }
-            
             .nav-container {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -570,45 +568,56 @@
                 font-size: 1rem;
             }
             
-            .blog-section .entry {
-                margin: 1rem 0;
-                padding: 1.5rem;
-            }
-            
-            .blog-section .entry h2 {
-                font-size: 1.5rem;
-            }
-            
-            .floating-icon {
-                display: none;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-            
             .highlights-grid,
             .budget-grid,
             .tips-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-        }
-        
-        @media (max-width: 480px) {
-            .header-container {
-                height: 50vh;
-            }
             
-            .header-content h1 {
-                font-size: 2rem;
-            }
-            
-            .blog-section .entry {
-                padding: 1rem;
+            .floating-icon {
+                display: none;
             }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            
+            // Fonction pour afficher une section
+            function showSection(targetId) {
+                sections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.remove('hidden');
+                    } else if (section.classList.contains('section')) {
+                        section.classList.add('hidden');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`[href="#${targetId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+            
+            // Gestion des clics sur la navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    showSection(targetId);
+                });
+            });
+            
+            // Afficher le blog par défaut
+            showSection('blog');
+        });
+    </script>
 </head>
 <body>
     <!-- Background animations -->
@@ -624,8 +633,6 @@
     <!-- Header with Egypt theme -->
     <header class="header-container">
         <div class="header-overlay"></div>
-        <div class="pyramid-decoration"></div>
-        <div class="pyramid-decoration"></div>
         <div class="header-content">
             <h1>🏺 ChaEnVadrouille</h1>
             <p>« L'Afrique, version imprévue. »</p>
@@ -676,44 +683,56 @@
 
         <!-- Section Highlights -->
         <section id="highlights" class="section hidden">
-            <h2 class="section-title">✨ Incontournables</h2>
-            <p class="section-subtitle">Les merveilles qui vous attendent</p>
+            <h2 class="section-title">✨ Incontournables & Pépites Secrètes</h2>
+            <p class="section-subtitle">Les merveilles classiques et les trésors cachés</p>
             
             <div class="highlights-grid">
                 <div class="highlight-card">
                     <div class="icon">🏛️</div>
                     <h3>Pyramides de Gizeh</h3>
-                    <p>Les dernières merveilles du monde antique encore debout. Admirez la Grande Pyramide de Khéops et le mystérieux Sphinx.</p>
+                    <p>Les dernières merveilles du monde antique. Entrée dans la Grande Pyramide possible moyennant 440 EGP supplémentaires - une expérience claustrophobe mais inoubliable !</p>
                 </div>
                 
                 <div class="highlight-card">
                     <div class="icon">🏺</div>
                     <h3>Vallée des Rois</h3>
-                    <p>Explorez les tombeaux des pharaons à Louxor, dont celui de Toutânkhamon, dans cette nécropole légendaire.</p>
+                    <p>64 tombeaux royaux cachés dans la montagne thébaine. Le tombeau de Toutânkhamon nécessite un billet spécial mais vaut largement le détour.</p>
                 </div>
                 
                 <div class="highlight-card">
-                    <div class="icon">🛶</div>
-                    <h3>Croisière sur le Nil</h3>
-                    <p>Naviguez sur le fleuve sacré et découvrez les temples d'Edfou, Kom Ombo et Philae au fil de l'eau.</p>
-                </div>
-                
-                <div class="highlight-card">
-                    <div class="icon">🕌</div>
-                    <h3>Le Caire Islamique</h3>
-                    <p>Perdez-vous dans les ruelles du bazar Khan el-Khalili et admirez la citadelle de Saladin.</p>
+                    <div class="icon">🔍</div>
+                    <h3>Dendéra Temple</h3>
+                    <p>Le temple le mieux conservé d'Égypte ! Ses plafonds astronomiques et ses couleurs préservées en font un joyau méconnu à 60km de Louxor.</p>
                 </div>
                 
                 <div class="highlight-card">
                     <div class="icon">🏖️</div>
-                    <h3>Mer Rouge</h3>
-                    <p>Plongez dans les eaux cristallines d'Hurghada ou Charm el-Cheikh pour découvrir les récifs coralliens.</p>
+                    <h3>Désert Blanc</h3>
+                    <p>Formations calcaires surréalistes qui ressemblent à un autre monde. Camping sous les étoiles obligatoire - une expérience mystique garantie.</p>
                 </div>
                 
                 <div class="highlight-card">
-                    <div class="icon">🐪</div>
-                    <h3>Désert du Sahara</h3>
-                    <p>Aventurez-vous dans les oasis du désert blanc et noir pour une expérience inoubliable.</p>
+                    <div class="icon">🐊</div>
+                    <h3>Temple de Kom Ombo</h3>
+                    <p>Unique temple double dédié au dieu crocodile Sobek et au dieu faucon Horus. Ne ratez pas le musée des crocodiles momifiés !</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">🏝️</div>
+                    <h3>Île Éléphantine</h3>
+                    <p>Oasis de verdure sur le Nil à Assouan. Village nubien authentique, jardins botaniques et vue imprenable sur les cataractes.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">🦅</div>
+                    <h3>Monastère Saint-Antoine</h3>
+                    <p>Le plus ancien monastère chrétien au monde, perdu dans le désert oriental. Fresques byzantines exceptionnelles et silence absolu.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">💎</div>
+                    <h3>Wadi El Gemal</h3>
+                    <p>Parc national secret entre mer Rouge et montagnes. Plages vierges, coraux intacts et rencontre avec les Bisharis, derniers nomades bédouins.</p>
                 </div>
             </div>
         </section>
@@ -726,50 +745,22 @@
             <div class="itinerary">
                 <h3>⚡ Circuit Express (5 jours)</h3>
                 <div class="day">
-                    <strong>Jour 1-2 :</strong> Le Caire - Pyramides de Gizeh, Musée égyptien, Khan el-Khalili
+                    <strong>Jour 1-2 :</strong> Le Caire - Pyramides de Gizeh, Sphinx, Musée égyptien, Khan el-Khalili
                 </div>
                 <div class="day">
-                    <strong>Jour 3-4 :</strong> Louxor - Vallée des Rois, Temple de Karnak, Temple de Louxor
+                    <strong>Jour 3-4 :</strong> Louxor - Vallée des Rois, Temple de Karnak, Temple de Louxor, survol en montgolfière
                 </div>
                 <div class="day">
-                    <strong>Jour 5 :</strong> Retour au Caire - Temple de Saqqarah ou shopping
+                    <strong>Jour 5 :</strong> Retour au Caire - Saqqarah et Memphis ou shopping final
                 </div>
             </div>
             
             <div class="itinerary">
                 <h3>🏛️ Circuit Classique (10 jours)</h3>
                 <div class="day">
-                    <strong>Jour 1-3 :</strong> Le Caire - Pyramides, Musée, Citadelle, Memphis et Saqqarah
+                    <strong>Jour 1-3 :</strong> Le Caire - Pyramides, Musée, Citadelle, Memphis, Saqqarah, Caire copte
                 </div>
                 <div class="day">
-                    <strong>Jour 4-7 :</strong> Croisière sur le Nil - Louxor, Edfou, Kom Ombo, Assouan
+                    <strong>Jour 4-7 :</strong> Croisière sur le Nil - Louxor, Edfou, Kom Ombo, Assouan, île Éléphantine
                 </div>
-                <div class="day">
-                    <strong>Jour 8-9 :</strong> Abou Simbel - Excursion aux temples de Ramsès II
-                </div>
-                <div class="day">
-                    <strong>Jour 10 :</strong> Retour et détente
-                </div>
-            </div>
-            
-            <div class="itinerary">
-                <h3>🌟 Grand Tour (15 jours)</h3>
-                <div class="day">
-                    <strong>Jour 1-4 :</strong> Le Caire approfondi - Tous les sites + Alexandrie
-                </div>
-                <div class="day">
-                    <strong>Jour 5-10 :</strong> Croisière complète sur le Nil + Abou Simbel
-                </div>
-                <div class="day">
-                    <strong>Jour 11-13 :</strong> Désert blanc et oasis de Siwa
-                </div>
-                <div class="day">
-                    <strong>Jour 14-15 :</strong> Mer Rouge - Plongée et détente à Hurghada
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Budget -->
-        <section id="budget" class="budget-section hidden">
-            <h2 class="section-title">💰 Estimations Budgétaires</h2>
-            <p class="section-subtitle">Planifiez votre voyage selon votre budget</p>
+                <div
