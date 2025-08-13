@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChaEnVadrouille - Fidji</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
         
@@ -109,21 +109,6 @@
             animation: slideInUp 1.5s ease-out 0.3s both;
         }
         
-        .wave-decoration {
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,60 Q300,0 600,60 T1200,60 V120 H0 V60 Z" fill="rgba(26,188,156,0.3)"/></svg>') repeat-x;
-            animation: waveFloat 3s ease-in-out infinite;
-        }
-        
-        @keyframes waveFloat {
-            0%, 100% { transform: translateX(0px); }
-            50% { transform: translateX(-20px); }
-        }
-        
         @keyframes slideInDown {
             from { transform: translateY(-100px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -192,15 +177,43 @@
             left: 100%;
         }
         
-        /* Conteneur des articles */
+        nav a.active {
+            background: linear-gradient(135deg, #1abc9c, #2ecc71);
+            color: white;
+        }
+        
+        /* Conteneur principal */
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
         
-        /* Cartes d'articles modernisées */
-        .entry {
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #16a085;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+        
+        /* Cartes d'articles du blog */
+        .blog-section .entry {
             background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(223,250,243,0.95) 100%);
             margin: 2rem 0;
             padding: 2rem;
@@ -216,13 +229,13 @@
             transition: all 0.3s ease;
         }
         
-        .entry:hover {
+        .blog-section .entry:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             border-color: rgba(26,188,156,0.4);
         }
         
-        .entry::before {
+        .blog-section .entry::before {
             content: '';
             position: absolute;
             top: 0;
@@ -233,16 +246,8 @@
             transition: left 0.5s ease;
         }
         
-        .entry:hover::before {
+        .blog-section .entry:hover::before {
             left: 100%;
-        }
-        
-        .entry:nth-child(even) {
-            animation-delay: 0.2s;
-        }
-        
-        .entry:nth-child(odd) {
-            animation-delay: 0.4s;
         }
         
         @keyframes slideInView {
@@ -252,7 +257,7 @@
             }
         }
         
-        .entry .date {
+        .blog-section .entry .date {
             display: flex;
             align-items: center;
             font-weight: 600;
@@ -262,34 +267,273 @@
             gap: 0.5rem;
         }
         
-        .entry h2 {
+        .blog-section .entry h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: #2d2d2d;
             line-height: 1.3;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
         }
         
-        .entry h2 .icon {
-            font-size: 1.5rem;
-            color: #1abc9c;
-            animation: iconPulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .entry p {
+        .blog-section .entry p {
             font-size: 1.1rem;
             line-height: 1.7;
             color: #444;
             text-align: justify;
+        }
+
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #1abc9c;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(26,188,156,0.1), transparent);
+            transform: rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+        
+        .highlight-card:hover::before {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .highlight-card .icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight-card h3 {
+            font-size: 1.6rem;
+            color: #16a085;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .highlight-card p {
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        /* Section Budget */
+        .budget-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(26, 188, 156, 0.08) 0%, rgba(46, 204, 113, 0.08) 100%);
+        }
+        
+        .budget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .budget-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(26, 188, 156, 0.2);
+        }
+        
+        .budget-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        
+        .budget-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1abc9c, #2ecc71);
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .card-subtitle {
+            color: #16a085;
+            font-size: 1rem;
+            font-style: italic;
+        }
+        
+        .budget-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+            transition: all 0.2s ease;
+        }
+        
+        .budget-item:hover {
+            background: rgba(26, 188, 156, 0.05);
+            padding-left: 10px;
+            border-radius: 8px;
+        }
+        
+        .budget-item.total {
+            border-bottom: none;
+            margin-top: 15px;
+            padding-top: 20px;
+            border-top: 2px solid #1abc9c;
+            background: linear-gradient(90deg, rgba(26, 188, 156, 0.1), rgba(46, 204, 113, 0.1));
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .item-label {
+            flex: 1;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .item-price {
+            color: #1abc9c;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        .budget-item.total .item-price {
+            color: #16a085;
+            font-size: 1.2rem;
+        }
+
+        /* Section Conseils */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .tip-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 3px solid #1abc9c;
+            transition: all 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .tip-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .tip-card h3 {
+            color: #16a085;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .tip-card p {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* Itinéraires */
+        .itinerary {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid #1abc9c;
+            transition: all 0.3s ease;
+        }
+        
+        .itinerary:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .itinerary h3 {
+            color: #16a085;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .day {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(26, 188, 156, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid #1abc9c;
+            transition: all 0.3s ease;
+        }
+        
+        .day:hover {
+            background: rgba(26, 188, 156, 0.15);
+            transform: translateX(3px);
+        }
+        
+        .day strong {
+            color: #16a085;
+        }
+
+        /* Hidden sections */
+        .hidden {
+            display: none;
         }
         
         /* Éléments décoratifs */
@@ -314,10 +558,6 @@
                 font-size: 2.5rem;
             }
             
-            .header-content p {
-                font-size: 1.1rem;
-            }
-            
             .nav-container {
                 flex-direction: column;
                 gap: 0.5rem;
@@ -328,37 +568,56 @@
                 font-size: 1rem;
             }
             
-            .entry {
-                margin: 1rem 0;
-                padding: 1.5rem;
-            }
-            
-            .entry h2 {
-                font-size: 1.5rem;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
+            .highlights-grid,
+            .budget-grid,
+            .tips-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
             .floating-icon {
                 display: none;
             }
         }
-        
-        @media (max-width: 480px) {
-            .header-container {
-                height: 50vh;
-            }
-            
-            .header-content h1 {
-                font-size: 2rem;
-            }
-            
-            .entry {
-                padding: 1rem;
-            }
-        }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            
+            // Fonction pour afficher une section
+            function showSection(targetId) {
+                sections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.remove('hidden');
+                    } else if (section.classList.contains('section')) {
+                        section.classList.add('hidden');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`[href="#${targetId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+            
+            // Gestion des clics sur la navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    showSection(targetId);
+                });
+            });
+            
+            // Afficher le blog par défaut
+            showSection('blog');
+        });
+    </script>
 </head>
 <body>
     <!-- Background animations -->
@@ -374,7 +633,6 @@
     <!-- Header with Fiji theme -->
     <header class="header-container">
         <div class="header-overlay"></div>
-        <div class="wave-decoration"></div>
         <div class="header-content">
             <h1>🏝️ ChaEnVadrouille</h1>
             <p>« Le paradis semble à portée de main. »</p>
@@ -384,41 +642,409 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#">💰 Budgets</a>
-            <a href="#">🎒 Essentiels</a>
-            <a href="#">ℹ️ À savoir</a>
+            <a href="#blog" class="nav-link active">📖 Blog</a>
+            <a href="#highlights" class="nav-link">✨ Incontournables</a>
+            <a href="#itineraires" class="nav-link">🗺️ Itinéraires</a>
+            <a href="#budget" class="nav-link">💰 Budgets</a>
+            <a href="#conseils" class="nav-link">ℹ️ À savoir</a>
         </div>
     </nav>
     
-    <!-- Container for entries -->
     <div class="container">
-        <div class="entry">
-            <div class="adventure-icon">✈️</div>
-            <div class="date">01—03/08/2025</div>
-            <h2><span class="icon">✈️</span> Course Contre la Montre jusqu'à Nadi</h2>
-            <p>Départ de Bruxelles. Retards, atterrissage raté à Istanbul, course folle pour attraper les correspondances. Overbooking à Singapour, stress à l'immigration, mais on arrive enfin à Nadi. Accueil chaleureux, ukulélés, fleurs dans les cheveux. On y est !</p>
-        </div>
-        
-        <div class="entry">
-            <div class="adventure-icon">🐠</div>
-            <div class="date">04/08/2025</div>
-            <h2><span class="icon">🌊</span> Requins, Murènes et Jet Lag à Wayasewa</h2>
-            <p>Arrivée sur l'île de Wayasewa. Pension chez l'habitant, immersion totale. Snorkeling avec requins et murènes, ambiance roots. Premiers signes de tourista. Le décor est paradisiaque, mais l'hygiène laisse à désirer.</p>
-        </div>
-        
-        <div class="entry">
-            <div class="adventure-icon">💊</div>
-            <div class="date">05—07/08/2025</div>
-            <h2><span class="icon">🏥</span> Tourista, Toilettes de l'Enfer et Médecine de Voyage</h2>
-            <p>Intoxication alimentaire sévère. Diarrhée, vomissements, fièvre. Conditions sanitaires rudimentaires. Rencontre avec des voyageurs malades, entraide médicale improvisée. Luca tombe malade à son tour. On survit grâce aux tisanes, huiles essentielles et humour noir.</p>
-        </div>
-        
-        <div class="entry">
-            <div class="adventure-icon">🏡</div>
-            <div class="date">08/08/2025</div>
-            <h2><span class="icon">🏖️</span> Évasion vers le White Sandy Beach Resort</h2>
-            <p>Transfert en mer vers un nouveau lieu. Surprise : ce n'est plus un resort mais une homestay. Accueil bienveillant, noix de coco fraîche, bungalow propre. Rencontre avec une famille française. On respire enfin. Le paradis semble à portée de main.</p>
-        </div>
+        <!-- Section Blog -->
+        <section id="blog" class="blog-section">
+            <div class="entry">
+                <div class="adventure-icon">✈️</div>
+                <div class="date">01—03/08/2025</div>
+                <h2>Course Contre la Montre jusqu'à Nadi</h2>
+                <p>Départ de Bruxelles. Retards, atterrissage raté à Istanbul, course folle pour attraper les correspondances. Overbooking à Singapour, stress à l'immigration, mais on arrive enfin à Nadi. Accueil chaleureux, ukulélés, fleurs dans les cheveux. On y est !</p>
+            </div>
+            
+            <div class="entry">
+                <div class="adventure-icon">🐠</div>
+                <div class="date">04/08/2025</div>
+                <h2>Requins, Murènes et Jet Lag à Wayasewa</h2>
+                <p>Arrivée sur l'île de Wayasewa. Pension chez l'habitant, immersion totale. Snorkeling avec requins et murènes, ambiance roots. Premiers signes de tourista. Le décor est paradisiaque, mais l'hygiène laisse à désirer.</p>
+            </div>
+            
+            <div class="entry">
+                <div class="adventure-icon">💊</div>
+                <div class="date">05—07/08/2025</div>
+                <h2>Tourista, Toilettes de l'Enfer et Médecine de Voyage</h2>
+                <p>Intoxication alimentaire sévère. Diarrhée, vomissements, fièvre. Conditions sanitaires rudimentaires. Rencontre avec des voyageurs malades, entraide médicale improvisée. Luca tombe malade à son tour. On survit grâce aux tisanes, huiles essentielles et humour noir.</p>
+            </div>
+            
+            <div class="entry">
+                <div class="adventure-icon">🏡</div>
+                <div class="date">08/08/2025</div>
+                <h2>Évasion vers le White Sandy Beach Resort</h2>
+                <p>Transfert en mer vers un nouveau lieu. Surprise : ce n'est plus un resort mais une homestay. Accueil bienveillant, noix de coco fraîche, bungalow propre. Rencontre avec une famille française. On respire enfin. Le paradis semble à portée de main.</p>
+            </div>
+        </section>
+
+        <!-- Section Highlights -->
+        <section id="highlights" class="section hidden">
+            <h2 class="section-title">✨ Incontournables & Trésors Cachés</h2>
+            <p class="section-subtitle">Des îles de rêve aux expériences authentiques</p>
+            
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="icon">🏊‍♀️</div>
+                    <h3>Cloud 9</h3>
+                    <p>Plateforme flottante légendaire au milieu du lagon. Pizza, cocktails et DJ sets sur l'eau turquoise. Réservation indispensable, transfert en speedboat inclus.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">🦈</div>
+                    <h3>Beqa Lagoon</h3>
+                    <p>Plongée avec les requins-tigres ! L'une des rares expériences au monde sans cage. Pour plongeurs expérimentés uniquement - sensations garanties.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">🌴</div>
+                    <h3>Yasawa Islands</h3>
+                    <p>Chapelet d'îles sauvages aux plages de sable blanc immaculé. Blue Lagoon Beach où fut tourné le film - un décor de carte postale vivante.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">🏞️</div>
+                    <h3>Sigatoka Sand Dunes</h3>
+                    <p>Désert de sable au cœur du Pacifique ! Site archéologique de 3000 ans, point de vue époustouflant sur la côte de Coral.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">💧</div>
+                    <h3>Sawa-i-Lau Caves</h3>
+                    <div>Cave sacrée où l'on peut nager dans une piscine naturelle souterraine. Légendes locales et eaux cristallines dans un cadre mystique.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">🔥</div>
+                    <h3>Cérémonie Kava</h3>
+                    <p>Rituel traditionnel fidjien authentique dans les villages. Boisson sacrée des anciens, accueil chaleureux et chants traditionnels.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">🚁</div>
+                    <h3>Mamanuca Islands</h3>
+                    <p>Archipel de rêve accessible en hélicoptère. Îles privées, resorts de luxe et spots de surf mondialement connus comme Cloudbreak.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="icon">🐚</div>
+                    <h3>Pearl Farm Savusavu</h3>
+                    <p>Ferme perlière traditionnelle dans la baie cachée de Savusavu. Découverte du processus de culture et possibilité d'acheter des perles noires.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Itinéraires -->
+        <section id="itineraires" class="section hidden">
+            <h2 class="section-title">🗺️ Itinéraires Suggérés</h2>
+            <p class="section-subtitle">Explorez l'archipel selon vos envies</p>
+            
+            <div class="itinerary">
+                <h3>🏖️ Escapade Romantique (7 jours)</h3>
+                <div class="day">
+                    <strong>Jour 1-2 :</strong> Nadi - Arrivée, marché local, Garden of the Sleeping Giant
+                </div>
+                <div class="day">
+                    <strong>Jour 3-5 :</strong> Yasawa Islands - Resort privé, plongée, couchers de soleil
+                </div>
+                <div class="day">
+                    <strong>Jour 6-7 :</strong> Mamanuca - Cloud 9, détente plage, spa traditionnel
+                </div>
+            </div>
+            
+            <div class="itinerary">
+                <h3>🤿 Aventure Complète (14 jours)</h3>
+                <div class="day">
+                    <strong>Jour 1-3 :</strong> Viti Levu - Nadi, Suva, villages traditionnels, rafting Navua
+                </div>
+                <div class="day">
+                    <strong>Jour 4-8 :</strong> Yasawa/Mamanuca - Island hopping, plongée, villages authentiques
+                </div>
+                <div class="day">
+                    <strong>Jour 9-11 :</strong> Vanua Levu - Savusavu, sources chaudes, ferme perlière
+                </div>
+                <div class="day">
+                    <strong>Jour 12-14 :</strong> Taveuni - "Garden Island", cascade Bouma, plongée Rainbow Reef
+                </div>
+            </div>
+            
+            <div class="itinerary">
+                <h3>🏄‍♀️ Trip Aventurier (10 jours)</h3>
+                <div class="day">
+                    <strong>Jour 1-2 :</strong> Viti Levu - Trekking Sigatoka, rafting rivière Navua
+                </div>
+                <div class="day">
+                    <strong>Jour 3-6 :</strong> Beqa Lagoon - Plongée requins, stay chez l'habitant, ceremonies kava
+                </div>
+                <div class="day">
+                    <strong>Jour 7-10 :</strong> Taveuni - Randonnée Lavena Trail, Bouma Falls, snorkeling intensif
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Budget -->
+        <section id="budget" class="budget-section section hidden">
+            <h2 class="section-title">💰 Estimations Budgétaires</h2>
+            <p class="section-subtitle">Le paradis a un prix - préparez votre budget</p>
+            
+            <div class="budget-grid">
+                <div class="budget-card">
+                    <div class="card-header">
+                        <h3 class="card-title">🎒 Budget Backpacker</h3>
+                        <p class="card-subtitle">Austérité tropicale</p>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Hébergement (dortoirs/camping)</span>
+                        <span class="item-price">35-50€/nuit</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Repas (cuisine locale/self-catering)</span>
+                        <span class="item-price">25-35€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Transport (bus/barge)</span>
+                        <span class="item-price">15-25€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Activités (snorkeling/randos)</span>
+                        <span class="item-price">20-40€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Divers</span>
+                        <span class="item-price">15-20€/jour</span>
+                    </div>
+                    <div class="budget-item total">
+                        <span class="item-label">Total par jour</span>
+                        <span class="item-price">110-170€</span>
+                    </div>
+                </div>
+                
+                <div class="budget-card">
+                    <div class="card-header">
+                        <h3 class="card-title">🏨 Budget Confort</h3>
+                        <p class="card-subtitle">Équilibre tropical</p>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Hébergement (resorts 3-4*)</span>
+                        <span class="item-price">120-200€/nuit</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Repas (restaurants/resorts)</span>
+                        <span class="item-price">60-80€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Transport (transferts privés)</span>
+                        <span class="item-price">50-80€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Activités (plongée/excursions)</span>
+                        <span class="item-price">80-120€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Divers/Shopping</span>
+                        <span class="item-price">30-50€/jour</span>
+                    </div>
+                    <div class="budget-item total">
+                        <span class="item-label">Total par jour</span>
+                        <span class="item-price">340-530€</span>
+                    </div>
+                </div>
+                
+                <div class="budget-card">
+                    <div class="card-header">
+                        <h3 class="card-title">👑 Budget Luxe</h3>
+                        <p class="card-subtitle">Paradis sans limite</p>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Hébergement (resorts 5*)</span>
+                        <span class="item-price">400-1200€/nuit</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Repas (gastronomie/room service)</span>
+                        <span class="item-price">150-250€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Transport (hélico/jet privé)</span>
+                        <span class="item-price">200-500€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Activités VIP</span>
+                        <span class="item-price">200-400€/jour</span>
+                    </div>
+                    <div class="budget-item">
+                        <span class="item-label">Spa/Expériences</span>
+                        <span class="item-price">100-300€/jour</span>
+                    </div>
+                    <div class="budget-item total">
+                        <span class="item-label">Total par jour</span>
+                        <span class="item-price">1050-2650€</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 30px; background: rgba(255, 255, 255, 0.9); border-radius: 15px; border-left: 5px solid #1abc9c;">
+                <h3 style="color: #16a085; margin-bottom: 15px;">💡 Conseils Budget</h3>
+                <p style="margin-bottom: 10px;"><strong>Vol :</strong> 1200-2000€ depuis l'Europe (souvent avec 2 escales).</p>
+                <p style="margin-bottom: 10px;"><strong>Visa :</strong> Gratuit pour 4 mois (passeport requis).</p>
+                <p style="margin-bottom: 10px;"><strong>Saison :</strong> Tarifs +30% en haute saison (mai-octobre).</p>
+                <p style="margin-bottom: 10px;"><strong>Économies :</strong> Bula Pass pour transport entre îles (-20%).</p>
+                <p><strong>Attention :</strong> Les prix alimentaires sont 2-3x plus élevés qu'en Europe.</p>
+            </div>
+        </section>
+
+        <!-- Section Conseils -->
+        <section id="conseils" class="section hidden">
+            <h2 class="section-title">ℹ️ À Savoir Avant de Partir</h2>
+            <p class="section-subtitle">Conseils essentiels pour votre aventure fidjienne</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="icon" style="color: #e74c3c;">📋</div>
+                    <h3>Formalités</h3>
+                    <p><strong>Visa :</strong> Gratuit pour 4 mois avec passeport valide</p>
+                    <p><strong>Vaccins :</strong> Aucun obligatoire, hépatite A/B recommandée</p>
+                    <p><strong>Assurance :</strong> Indispensable (évacuation médicale coûteuse)</p>
+                    <p><strong>Douane :</strong> Interdiction stricte drogues/armes/pornographie</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #f39c12;">💱</div>
+                    <h3>Monnaie</h3>
+                    <p><strong>Devise :</strong> Dollar fidjien (FJD)</p>
+                    <p><strong>Taux :</strong> 1€ ≈ 2.4 FJD</p>
+                    <p><strong>Cartes :</strong> Acceptées dans resorts, espèces nécessaires ailleurs</p>
+                    <p><strong>Change :</strong> Banques et aéroports uniquement</p>
+                    <p><strong>Pourboire :</strong> Non obligatoire mais apprécié (10%)</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #3498db;">🌡️</div>
+                    <h3>Climat</h3>
+                    <p><strong>Saison sèche :</strong> Mai-octobre (22-26°C, idéal)</p>
+                    <p><strong>Saison humide :</strong> Nov-avril (chaud, cyclones possibles)</p>
+                    <p><strong>Eau :</strong> 24-28°C toute l'année</p>
+                    <p><strong>UV :</strong> Très intenses, protection maximale requise</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #9b59b6;">🏝️</div>
+                    <h3>Culture Locale</h3>
+                    <p><strong>Salut :</strong> "Bula!" (bonjour universel)</p>
+                    <p><strong>Respect :</strong> Enlever chapeau/lunettes en village</p>
+                    <p><strong>Kava :</strong> Rituel sacré, accepter poliment</p>
+                    <p><strong>Dimanche :</strong> Jour sacré, tout ferme (sauf resorts)</p>
+                    <p><strong>Villages :</strong> Demander permission chef avant visite</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #27ae60;">🏊‍♀️</div>
+                    <h3>Activités Marines</h3>
+                    <p><strong>Plongée :</strong> Certification PADI reconnue partout</p>
+                    <p><strong>Snorkeling :</strong> Équipement fourni par la plupart des resorts</p>
+                    <p><strong>Surf :</strong> Spots world-class (Cloudbreak, Restaurants)</p>
+                    <p><strong>Marées :</strong> Importantes, vérifier horaires</p>
+                    <p><strong>Requins :</strong> Inoffensifs dans lagons, spectacle garanti</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #e67e22;">⚠️</div>
+                    <h3>Sécurité</h3>
+                    <p><strong>Criminalité :</strong> Très faible, petits vols possibles</p>
+                    <p><strong>Santé :</strong> Dengue rare, protection antimoustiques</p>
+                    <p><strong>Mer :</strong> Courants forts hors lagons</p>
+                    <p><strong>Cyclones :</strong> Nov-avril, suivre alertes météo</p>
+                    <p><strong>Urgences :</strong> 911 (police/pompiers/ambulance)</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #1abc9c;">🍽️</div>
+                    <h3>Cuisine</h3>
+                    <p><strong>Spécialités :</strong> Kokoda (ceviche), lovo (four terre)</p>
+                    <p><strong>Fruits :</strong> Mangues, papayes, fruits de la passion</p>
+                    <p><strong>Eau :</strong> Du robinet potable dans resorts</p>
+                    <p><strong>Alcool :</strong> Bière Fiji, rhum Bounty disponibles</p>
+                    <p><strong>Prix :</strong> Importations chères, cuisine locale abordable</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #34495e;">📱</div>
+                    <h3>Communication</h3>
+                    <p><strong>Langues :</strong> Anglais, fidjien, hindi</p>
+                    <p><strong>Internet :</strong> WiFi resorts, faible dans villages</p>
+                    <p><strong>Téléphone :</strong> Cartes SIM Vodafone/Digicel</p>
+                    <p><strong>Electricité :</strong> 240V, prises australiennes</p>
+                    <p><strong>Courrier :</strong> Poste Fiji lente mais fiable</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #8e44ad;">🚢</div>
+                    <h3>Transport</h3>
+                    <p><strong>Inter-îles :</strong> Bateaux Awesome Adventures, hélicos</p>
+                    <p><strong>Bus :</strong> Réseau correct Viti Levu, pas ailleurs</p>
+                    <p><strong>Taxi :</strong> Compteur obligatoire, négocier longues distances</p>
+                    <p><strong>Location :</strong> Voiture possible Viti Levu (conduite à gauche)</p>
+                    <p><strong>Vols domestiques :</strong> Fiji Airways, Northern Air</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #d35400;">🎁</div>
+                    <h3>Shopping</h3>
+                    <p><strong>Souvenirs :</strong> Perles noires, handicrafts, paréos</p>
+                    <p><strong>Duty-free :</strong> Aéroport Nadi bien fourni</p>
+                    <p><strong>Marchés :</strong> Suva, Nadi pour produits locaux</p>
+                    <p><strong>Négociation :</strong> Possible marchés, fixe magasins</p>
+                    <p><strong>Douane :</strong> Limite coraux/coquillages (protection)</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="icon" style="color: #e91e63;">💊</div>
+                    <h3>Santé</h3>
+                    <p><strong>Tourista :</strong> Moins fréquente qu'ailleurs</p>
+                    <p><strong>Hôpitaux :</strong> Correcte Suva/Nadi, basique îles</p>
+                    <p><strong>Pharmacies :</strong> Médicaments européens disponibles</p>
+                    <p><strong>Soleil :</strong> Burns rapides, renouveler crème souvent</p>
+                    <p><strong>Coraux :</strong> Coupures fréquentes, désinfecter immédiatement</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, rgba(26, 188, 156, 0.1), rgba(46, 204, 113, 0.1)); border-radius: 15px; border: 2px solid #1abc9c;">
+                <h3 style="color: #16a085; margin-bottom: 20px; text-align: center; font-size: 1.5rem;">🏆 Conseils d'Initié</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #1abc9c; margin-bottom: 10px;">🌅 Timing parfait</h4>
+                        <p>Réserver Cloud 9 pour le coucher de soleil (17h-19h). Arriver tôt pour avoir une table au bord de l'eau. Spectacle magique garanti !</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #1abc9c; margin-bottom: 10px;">🎫 Bula Pass</h4>
+                        <p>Pass transport entre îles (7-28 jours) économique pour island-hopping. Réserver cabines sur Yasawa Flyer à l'avance.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #1abc9c; margin-bottom: 10px;">🍹 Happy Hours</h4>
+                        <p>17h-19h dans tous les resorts. Cocktails à -50%, ambiance décontractée et couchers de soleil épiques depuis les bars de plage.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #1abc9c; margin-bottom: 10px;">🐠 Secret spots</h4>
+                        <p>Rainbow Reef à Taveuni = meilleur site de plongée. Soft corals extraordinaires et peu de monde comparé aux sites mainstream.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 25px; padding: 20px; background: rgba(255, 255, 255, 0.7); border-radius: 10px;">
+                    <h4 style="color: #16a085; margin-bottom: 15px;">⚡ Phrases Essentielles</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px;">
+                        <p><strong>Bula!</strong> - Bonjour/Salut universel</p>
+                        <p><strong>Vinaka vaka levu</strong> - Merci beaucoup</p>
+                        <p><strong>Sota tale</strong> - À bientôt</p>
+                        <p><strong>Yadra</strong> - Bonne nuit</p>
+                        <p><strong>Io</strong> - Oui / <strong>Sega</strong> - Non</p>
+                        <p><strong>Vaka malua</strong> - Ralentis/Pas de souci</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
-</html>
+                                                                                </html>
